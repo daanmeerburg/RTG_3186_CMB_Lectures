@@ -1,0 +1,42 @@
+\usepackage{amsmath,amssymb,bm,booktabs,tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\definecolor{navy}{HTML}{16324F}
+\definecolor{teal}{HTML}{008C95}
+\definecolor{orange}{HTML}{D96C23}
+\definecolor{pale}{HTML}{EEF5F6}
+\setbeamercolor{normal text}{fg=navy,bg=white}
+\setbeamercolor{structure}{fg=teal}
+\setbeamercolor{frametitle}{fg=navy,bg=white}
+\setbeamercolor{block title}{fg=white,bg=teal}
+\setbeamercolor{block body}{fg=navy,bg=pale}
+\setbeamercolor{alerted text}{fg=orange}
+\setbeamerfont{frametitle}{size=\Large,series=\bfseries}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}[circle]
+\setbeamersize{text margin left=8mm,text margin right=8mm}
+\setbeamertemplate{frametitle}{\vspace{2mm}\insertframetitle\par\vspace{1mm}{\color{teal}\hrule height .7pt}}
+\setbeamertemplate{footline}{\hspace{8mm}\scriptsize\color{navy!65}RTG 3186 \enspace | \enspace CMB \enspace | \enspace \insertshorttitle\hfill\insertframenumber/\inserttotalframenumber\hspace{8mm}\vspace{3mm}}
+\setbeamertemplate{note page}[plain]
+\graphicspath{{figures/}{../figures/}}
+\hypersetup{colorlinks=true,urlcolor=teal,linkcolor=teal,pdfauthor={Daan Meerburg}}
+\newcommand{\Hs}{\mathcal H}
+\newcommand{\Rs}{\mathcal R}
+\newcommand{\bk}{\mathbf k}
+\newcommand{\bx}{\mathbf x}
+\newcommand{\bn}{\hat{\mathbf n}}
+\newcommand{\bv}{\mathbf v}
+\newcommand{\key}[1]{\begin{block}{}#1\end{block}}
+\newcommand{\ask}[1]{\medskip\textcolor{orange}{\textbf{Predict / discuss:}} #1}
+\newcommand{\credit}[1]{\par\vspace{1mm}{\scriptsize\color{navy!70}#1\par}}
+\newcommand{\plot}[2]{\begin{center}\includegraphics[width=.96\linewidth,height=5.25cm,keepaspectratio]{#1}\end{center}\credit{#2}}
+\newcommand{\session}[3]{\title[#1]{#2}\begingroup
+\setbeamercolor{background canvas}{bg=navy}
+\setbeamercolor{normal text}{fg=white}\usebeamercolor[fg]{normal text}
+\begin{frame}[plain]
+\vspace{6mm}{\large\color{teal!45!white}RTG 3186 \enspace / \enspace STAUFEN 2026}\par
+\vspace{9mm}{\Huge\bfseries #2\par}\vspace{5mm}
+{\Large #3\par}\vfill
+Daan Meerburg\hfill\small 29 September--1 October 2026
+\end{frame}\endgroup}
+\newcommand{\colabone}{\href{https://colab.research.google.com/github/daanmeerburg/RTG_3186_CMB_Lectures/blob/main/CMB_physics_from_expansion_to_acoustics.ipynb}{Open Lecture 1 in Google Colab}}
+\newcommand{\colabtwo}{\href{https://colab.research.google.com/github/daanmeerburg/RTG_3186_CMB_Lectures/blob/main/Planck_TT_data_analysis.ipynb}{Open Lecture 2 in Google Colab}}

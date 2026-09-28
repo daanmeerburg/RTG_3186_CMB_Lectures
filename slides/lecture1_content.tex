@@ -1,0 +1,617 @@
+\session{Lecture 1}{The cosmic microwave background}{I. Expansion, recombination, and sound waves}
+
+\begin{frame}{Our route through the first two hours}
+\begin{enumerate}
+\item An expanding Universe: distances, energy, and temperature.
+\item An opaque plasma becomes transparent.
+\item Gravity and photon pressure create sound waves.
+\item Recombination captures their phases.
+\end{enumerate}
+\key{The destination: understand where the acoustic pattern comes from.}
+\medskip A 10-minute break near the middle. Questions and short notebook demonstrations throughout.
+\end{frame}
+
+\begin{frame}{From an unexpected signal to precision cosmology}
+\begin{description}
+\item[Late 1940s] Alpher and Herman predict a relic radiation bath from a hot early Universe, in the context of Gamow's hot-Big-Bang work.
+\medskip
+\item[1965] Penzias and Wilson publish their excess microwave antenna temperature. Dicke and collaborators identify the cosmological interpretation.
+\medskip
+\item[1990 / 1992] COBE establishes the nearly perfect blackbody spectrum (FIRAS), then detects primordial temperature anisotropies (DMR).
+\medskip
+\item[2000s / 2010s] WMAP and Planck map the sky in increasing detail: the tiny fluctuations become a precision test of cosmology.
+\end{description}
+\key{Two discoveries: a nearly uniform thermal background, and tiny variations across the sky.}
+\credit{Historical background: \href{https://www.esa.int/Science_Exploration/Space_Science/Planck/Planck_and_the_cosmic_microwave_background}{ESA}; \href{https://lhea.gsfc.nasa.gov/archive/mather/cobe/history.html}{NASA/COBE history}; \href{https://lambda.gsfc.nasa.gov/education/lambda_graphics/cmb_discovery.html}{NASA/LAMBDA}.}
+\end{frame}
+
+\begin{frame}{First look at the sky: Planck's CMB temperature map}
+\begin{columns}[c]
+\column{.65\textwidth}
+\centering\includegraphics[width=\linewidth,height=4.6cm,keepaspectratio]{planck-2018-cmb-map.jpg}
+\column{.32\textwidth}
+\small
+\begin{itemize}
+\item The whole sky, flattened into an oval (Mollweide projection).
+\item False colour: orange/red is warmer; blue is cooler than the mean.
+\item Tiny differences: typically $\sim100\,\mu$K on a $2.725$ K background.
+\end{itemize}
+\end{columns}
+\key{What sizes of hot and cold patches are present? The angular power spectrum makes this quantitative.}
+\credit{\copyright\ ESA/Planck Collaboration, \href{https://www.esa.int/ESA_Multimedia/Images/2018/07/Planck_s_view_of_the_cosmic_microwave_background2}{Planck Legacy Release 2018}. Observed, foreground-cleaned CMB reconstruction, not a simulation or a raw detector image. The mean and motion-induced dipole are removed.}
+\end{frame}
+
+\begin{frame}{This is the pattern we want to explain}
+\plot{planck-notebook-1.png}{How much temperature variation is present at each angular scale? Larger multipoles correspond to smaller angles. Real Planck 2018 TT bandpowers and published best-fit template, from the Lecture 2 notebook; formal definitions come in Lecture 2.}
+\end{frame}
+
+\begin{frame}{A nearly uniform blackbody sky}
+\[
+B_\nu(T)=\frac{2h\nu^3}{c^2}\frac{1}{e^{h\nu/(k_BT)}-1},
+\qquad T_0\simeq2.725\ \mathrm K.
+\]
+\[
+T(\bn)=T_0[1+\Theta(\bn)],\qquad \Theta=\frac{\delta T}{T_0}.
+\]
+After removing the motion-induced dipole, typical temperature variations are of order $10^{-5}$.
+\key{The mean temperature records thermal history. The small variations record gravity and the contents of the Universe.}
+\credit{Convention: $c=\hbar=k_B=1$ unless units are explicitly restored.}
+\end{frame}
+
+\begin{frame}{Expansion changes physical distances}
+\begin{columns}[c]
+\column{.49\textwidth}
+\[ds^2=-dt^2+a^2(t)d\bx^2\]
+\[d_{\rm phys}=a(t)|\Delta\bx|\]
+Comoving coordinates $\bx$ label the same freely moving observers. We choose $a(t_0)=1$.
+\column{.48\textwidth}
+\begin{tikzpicture}[scale=.8]
+% Draw lines and dots from the same integer lattice in each local frame.
+% TikZ's grid operation otherwise anchors its steps to the global origin.
+\begin{scope}[x=.6cm,y=.6cm]
+\foreach \i in {0,...,3}{
+  \draw[teal!35] (\i,0)--(\i,3) (0,\i)--(3,\i);
+  \foreach \j in {0,...,3}\fill[teal] (\i,\j) circle (1.8pt);
+}
+\end{scope}
+\draw[-{Stealth},thick,orange] (2,.9)--(2.7,.9);
+\begin{scope}[xshift=3cm,x=.9cm,y=.9cm]
+\foreach \i in {0,...,3}{
+  \draw[teal!35] (\i,0)--(\i,3) (0,\i)--(3,\i);
+  \foreach \j in {0,...,3}\fill[teal] (\i,\j) circle (1.8pt);
+}
+\end{scope}
+\node at (.9,-.5) {$a_1$};\node at (4.35,-.5) {$a_2>a_1$};
+\end{tikzpicture}
+\end{columns}
+\ask{What stays fixed in this picture? What grows?}
+\end{frame}
+
+\begin{frame}{What controls the expansion?}
+\[
+H\equiv\frac{1}{a}\frac{da}{dt},\qquad
+H^2=\frac{8\pi G}{3}\rho
+\]
+\[
+\frac{1}{a}\frac{d^2a}{dt^2}=-\frac{4\pi G}{3}(\rho+3P).
+\]
+\begin{itemize}
+\item Density determines the expansion rate.
+\item Pressure also gravitates.
+\item $H^{-1}$ gives the instantaneous expansion timescale; the age follows from the full expansion history.
+\end{itemize}
+\credit{Spatially flat FLRW background; $t$ is cosmic time.}
+\end{frame}
+
+\begin{frame}{Local conservation does not mean constant total energy}
+\[
+\nabla_\mu T^{\mu\nu}=0
+\quad\Longrightarrow\quad
+\frac{d\rho}{dt}+3H(\rho+P)=0.
+\]
+For a fixed comoving region, $V\propto a^3$ and $E=\rho V$:
+\[dE=-P\,dV.\]
+\key{A general expanding FLRW spacetime lacks the time-translation symmetry that would define a globally conserved energy of the usual kind.}
+For a separately conserved fluid with $P=w\rho$,
+\[\rho\propto a^{-3(1+w)},\qquad E\propto a^{-3w}.\]
+\end{frame}
+
+\begin{frame}{Energy inside the same comoving region}
+\plot{local-energy-plot.pdf}{Each component is normalized to its own present energy. The curves compare how the components evolve; their relative heights do not show their abundances.}
+\end{frame}
+
+\begin{frame}{Different components dominate at different times}
+\plot{plot-expansion.pdf}{Lecture 1 notebook. Matter--radiation equality is where $\Omega_r a^{-4}=\Omega_m a^{-3}$.}
+\end{frame}
+
+\begin{frame}{Expansion cools the photon bath}
+\[
+\lambda\propto a,\qquad E_\gamma\propto a^{-1},\qquad
+1+z=\frac{1}{a}.
+\]
+Uniform redshifting preserves a Planck spectrum:
+\[\boxed{T(z)=T_0(1+z).}\]
+At $z\simeq1100$, $T\simeq3000$ K, or $k_BT\simeq0.26$ eV.
+\ask{Why does radiation density fall as $a^{-4}$ rather than $a^{-3}$?}
+\end{frame}
+
+\begin{frame}{Define the distance before following the photon}
+\begin{columns}[c]
+\column{.57\textwidth}
+\[d\tau=\frac{dt}{a},\quad \chi=|\bx|\]
+For incoming radial light: $d\chi/d\tau=-1$.
+\[\chi_* =\tau_0-\tau_* =\int_0^{z_*}\frac{dz}{H(z)}.\]
+$L_{\rm com}$: transverse comoving size of a feature on the last-scattering shell.
+\[\theta\simeq\frac{L_{\rm com}}{\chi_*}\qquad\text{(small angle)}\]
+\column{.40\textwidth}
+\begin{tikzpicture}[scale=.85]
+\draw[very thick,teal] (0,0) circle (2);
+\fill[navy] (0,0) circle(2pt);
+\draw[orange,very thick] (20:2) arc(20:45:2);
+\draw[navy] (0,0)--(20:2) (0,0)--(45:2);
+\draw[orange] (20:.65) arc(20:45:.65);
+\node at (-.15,-.35) {us};
+\node at (1.1,.12) {$\chi_*$};
+\node[orange] at (2.4,1.25) {$L_{\rm com}$};
+\node at (0,-2.5) {last-scattering shell};
+\end{tikzpicture}
+\end{columns}
+\key{Later, our physical ruler will be the sound horizon.}
+\credit{From now on, dots denote $d/d\tau$ and $\Hs=\dot a/a=aH$. Distances above use $c=1$.}
+\end{frame}
+
+\begin{frame}{There is more than one useful horizon}
+\[
+H\equiv\frac1a\frac{da}{dt},\qquad
+\boxed{\Hs\equiv\frac1a\frac{da}{d\tau}=aH.}
+\]
+$H$ uses cosmic time $t$; $\Hs$ uses conformal time $\tau$.
+\medskip
+\begin{description}
+\item[Comoving Hubble length] $\Hs^{-1}$: the expansion timescale expressed as a comoving length.
+\item[Comoving particle horizon] $\int_{t_i}^{t}dt'/a(t')$: how far light could have travelled.
+\item[Sound horizon] $r_s(\tau)=\int_0^\tau c_s(\tau')d\tau'$: how far a pressure disturbance could have travelled.
+\end{description}
+\key{For acoustic oscillations, the relevant causal scale is the sound horizon.}
+\end{frame}
+
+\begin{frame}{Why was the early Universe opaque?}
+\[\Gamma_T=n_e\sigma_T,\qquad \lambda_{\rm mfp}=(n_e\sigma_T)^{-1}.\]
+\begin{center}
+\begin{tikzpicture}[node distance=26mm, every node/.style={align=center}]
+\node[draw=teal,rounded corners,minimum width=25mm,minimum height=12mm] (p) {photons};
+\node[draw=teal,rounded corners,right=of p,minimum width=25mm,minimum height=12mm] (e) {electrons};
+\node[draw=teal,rounded corners,right=of e,minimum width=25mm,minimum height=12mm] (b) {ions};
+\draw[<->,thick] (p)--node[above=2mm,font=\small]{Thomson}(e);
+\draw[<->,thick] (e)--node[above=2mm,font=\small]{Coulomb}(b);
+\end{tikzpicture}
+\end{center}
+\[\Gamma\gg H:\ \text{frequent interactions};\qquad\Gamma\lesssim H:\ \text{decoupling}.\]
+\ask{What happens to the opacity when free electrons disappear into atoms?}
+\end{frame}
+
+\begin{frame}{How does equilibrium divide hydrogen between ions and atoms?}
+\[p+e^-\leftrightarrow H^0+\gamma,\qquad \mu_p+\mu_e=\mu_{H^0},\quad\mu_\gamma=0.\]
+For a dilute non-relativistic species, including rest energy in $\mu_i$,
+\[n_i=g_i\left(\frac{m_iT}{2\pi}\right)^{3/2}e^{(\mu_i-m_i)/T}.\]
+\begin{itemize}
+\item $n_e$ and $n_p$ count \emph{free} electrons and protons.
+\item $n_{H^0}$ counts neutral hydrogen atoms, a separate species.
+\item $g_i$ counts the internal states of species $i$.
+\end{itemize}
+\key{Form $n_en_p/n_{H^0}$: chemical equilibrium will eliminate the chemical potentials.}
+\credit{Hydrogen only; natural units. The full derivation is in Section 5.2 of the notes.}
+\end{frame}
+
+\begin{frame}{Use equilibrium to relate the three species}
+Insert the three species densities:
+\[
+\frac{n_en_p}{n_{H^0}}=
+\frac{g_eg_p}{g_{H^0}}
+\left(\frac{m_em_p}{m_{H^0}}\frac{T}{2\pi}\right)^{3/2}
+e^{(\mu_e+\mu_p-\mu_{H^0})/T}
+e^{-(m_e+m_p-m_{H^0})/T}.
+\]
+\begin{itemize}
+\item Chemical equilibrium: $\mu_e+\mu_p-\mu_{H^0}=0$.
+\item Binding energy: $m_e+m_p-m_{H^0}=E_I=13.6$ eV.
+\item In the prefactor only, $m_{H^0}\simeq m_p$; ground-state spin counts give $g_eg_p/g_{H^0}=2\times2/4=1$.
+\end{itemize}
+\[
+\boxed{\frac{n_en_p}{n_{H^0}}\simeq
+\left(\frac{m_eT}{2\pi}\right)^{3/2}e^{-E_I/T}.}
+\]
+\credit{The tiny binding-energy mass difference must be retained in the exponential, where it supplies the temperature dependence.}
+\end{frame}
+
+\begin{frame}{Count every hydrogen nucleus}
+\[
+\boxed{n_H=\underbrace{n_p}_{\text{free protons}}+
+\underbrace{n_{H^0}}_{\text{neutral atoms}}}
+\]
+Each neutral atom contains one proton: $n_H$ counts \emph{all} hydrogen nuclei.
+\par Define the ionized fraction using this total; charge neutrality gives $n_e=n_p$:
+\[
+x_e=\frac{n_e}{n_H},\qquad n_e=n_p=x_en_H,\qquad
+n_{H^0}=(1-x_e)n_H.
+\]
+Substitute into the ratio:
+\[
+\frac{n_en_p}{n_{H^0}}=
+\frac{(x_en_H)^2}{(1-x_e)n_H}=n_H\frac{x_e^2}{1-x_e}.
+\]
+Divide the preceding Saha ratio by $n_H$ to obtain an equation for $x_e$.
+\credit{Only in the fully ionized limit is $n_H\simeq n_p$. The ratio $n_e/n_p=1$ follows from charge neutrality and therefore does not measure ionization.}
+\end{frame}
+
+\begin{frame}{Why recombination occurs far below 13.6 eV}
+Combining the equilibrium ratio with the ionized fraction gives the \emph{Saha equation}:
+\[
+\boxed{\frac{x_e^2}{1-x_e}=\frac1{n_H}
+\left(\frac{m_eT}{2\pi}\right)^{3/2}e^{-E_I/T}.}
+\]
+\begin{itemize}
+\item At $T=E_I$, the density-dependent prefactor is enormous: $x_e\simeq1$.
+\item Roughly a billion photons per baryon keep the ionizing tail populated.
+\item Half ionization requires $E_I/T\simeq42$, giving $T\simeq0.32$ eV.
+\end{itemize}
+\key{This equilibrium result determines the ionization fraction. Last scattering also depends on the interaction rate and expansion.}
+\end{frame}
+
+\begin{frame}{Neutral hydrogen forms rapidly as the plasma cools}
+\plot{saha-calculation.pdf}{Hydrogen Saha equilibrium. The cosmological evolution proceeds from right to left on this redshift axis.}
+\end{frame}
+
+\begin{frame}{Last scattering is a probability distribution}
+\[
+\widetilde\tau(\tau)=\int_\tau^{\tau_0} a n_e\sigma_T\,d\tau',
+\qquad \dot{\widetilde\tau}<0.
+\]
+\begin{itemize}
+\item $e^{-\widetilde\tau}$ is the probability of reaching us without another scattering.
+\item The visibility is $\boxed{g_\tau=-\dot{\widetilde\tau}e^{-\widetilde\tau}}$.
+\item The finite visibility width corresponds to a last-scattering shell with finite thickness.
+\end{itemize}
+\credit{The tilde matters: $\widetilde\tau$ is optical depth; $\tau$ is conformal time.}
+\end{frame}
+
+\begin{frame}{Recombination and last scattering are related, but distinct}
+\plot{visibility-calculation.pdf}{Saha-model demonstration. $g_z=g_\tau/H(z)$, so the peak depends on the integration variable. Precision calculations place last scattering near $z_*\simeq1100$; this equilibrium toy model peaks earlier.}
+\end{frame}
+
+\begin{frame}{Ten-minute break}
+\vfill\Large We have an expanding, cooling Universe that becomes transparent.
+\medskip\par What could make different patches of the last-scattering shell have different temperatures?
+\vfill
+\end{frame}
+
+\begin{frame}{Add small perturbations to the smooth background}
+\[\rho_i(\tau,\bx)=\bar\rho_i(\tau)[1+\delta_i(\tau,\bx)].\]
+In conformal Newtonian gauge,
+\[ds^2=a^2\big[-(1+2\Psi)d\tau^2+(1-2\Phi)d\bx^2\big].\]
+\begin{itemize}
+\item $\Psi$: gravitational potential; a potential well has $\Psi<0$.
+\item $\Phi$: scalar perturbation of spatial curvature.
+\item Keep terms linear in potentials, density contrasts, and velocities.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Why do two scalar potentials remain?}
+\begin{center}\Large
+4 scalar metric functions\par\medskip
+$-$ 2 scalar coordinate freedoms\par\medskip
+$=$ 2 scalar metric potentials
+\end{center}
+\key{These are constrained scalar potentials. The two propagating gravitational-wave polarizations belong to the tensor sector.}
+Einstein's equations relate the scalar potentials to matter perturbations.
+\end{frame}
+
+\begin{frame}{Anisotropic stress is directional momentum flux}
+\[T^i{}_j=P\delta^i{}_j+\pi^i{}_j,\qquad \pi^i{}_i=0.\]
+\begin{itemize}
+\item A quadrupole of particle momenta gives stress beyond isotropic pressure.
+\item Free-streaming neutrinos arrive from different regions without frequent collisions to isotropize them.
+\item Tight coupling suppresses photon anisotropic stress; photons develop it as scattering weakens.
+\end{itemize}
+\key{Negligible total scalar anisotropic stress gives $\Phi=\Psi$. Cold matter has small random-velocity stresses.}
+\end{frame}
+
+\begin{frame}{Why switch from position $\bx$ to wave number $\bk$?}
+\small
+The perturbation contains many spatial scales. Because the equations are linear, we may evolve one sinusoidal component at a time:
+\begin{columns}[c]
+\column{.48\textwidth}
+\[\delta(\bx)=\int\frac{d^3k}{(2\pi)^3}\delta(\bk)e^{i\bk\cdot\bx}.\]
+\begin{itemize}
+\item $\bk$ gives the direction; $k=|\bk|$ gives the scale.
+\item The wavelength is $\lambda=2\pi/k$: large $k$ means a short wave.
+\item Derivatives become algebraic: $\nabla\to i\bk$ and $\nabla^2\to-k^2$.
+\end{itemize}
+\column{.49\textwidth}\includegraphics[width=\linewidth]{spatial-wave.pdf}
+\end{columns}
+\key{The drawing is one mode at one instant: crests are compressions and troughs are rarefactions. We will solve for how its amplitude changes with time.}
+\end{frame}
+
+\begin{frame}{Plan for deriving the acoustic wave}
+For one Fourier mode, we track
+\[
+\underbrace{\Theta_0=\delta_\gamma/4}_{\text{photon monopole: density}},\qquad
+\underbrace{\theta_i=i\bk\!\cdot\!\bv_i\ (i=\gamma,b)}_{\text{velocity divergence}},\qquad
+\underbrace{\Phi,\Psi}_{\text{gravity}}.
+\]
+For photons, $\theta_\gamma$ carries the same bulk-flow information as the temperature dipole $\Theta_1$.
+\begin{columns}[T]
+\column{.47\textwidth}
+\begin{block}{Two evolution equations}
+\textbf{Continuity:} motion changes density.\\[1mm]
+\textbf{Euler:} pressure and gravity change motion.
+\end{block}
+\column{.49\textwidth}
+\begin{block}{Scattering and baryons}
+Scattering drives $\theta_\gamma$ toward $\theta_b$. Baryons then add inertia to the pressure-supported photon fluid.
+\end{block}
+\end{columns}
+\key{We will combine continuity and Euler into one oscillator equation. Pressure restores, gravity drives, and baryons change the inertia.}
+\end{frame}
+
+\begin{frame}{Velocity moves the fluid; convergence compresses it}
+\vspace{-1.5mm}
+\begin{columns}[T]
+\column{.47\textwidth}
+\begin{block}{Uniform translation}
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \draw[rounded corners,fill=cyan!6,draw=teal!65] (0,0) rectangle (4.3,1.55);
+  \foreach \x/\y in {.55/.40,1.35/1.10,2.05/.55,2.85/1.12,3.65/.45}
+    \fill[teal] (\x,\y) circle (2.2pt);
+  \foreach \y in {.35,.78,1.20}
+    \draw[-{Latex[length=2.5mm]},very thick,orange] (-.15,\y) -- (.65,\y);
+  \foreach \y in {.35,.78,1.20}
+    \draw[-{Latex[length=2.5mm]},very thick,orange] (3.65,\y) -- (4.45,\y);
+\end{tikzpicture}
+
+The same amount enters and leaves:
+\[
+\bv_\gamma\neq0,qquad \nabla\!\cdot\bv_\gamma=0.
+\]
+The patch moves, but its density is unchanged.
+\end{block}
+
+\column{.49\textwidth}
+\begin{block}{Converging flow}
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \draw[rounded corners,fill=cyan!12,draw=teal!65] (0,0) rectangle (4.3,1.55);
+  \foreach \x/\y in {1.45/.35,1.75/.78,1.48/1.20,2.20/.48,2.48/.95,2.85/.38,2.82/1.22}
+    \fill[teal] (\x,\y) circle (2.2pt);
+  \foreach \y in {.35,.78,1.20}{
+    \draw[-{Latex[length=2.5mm]},very thick,orange] (-.15,\y) -- (.75,\y);
+    \draw[-{Latex[length=2.5mm]},very thick,orange] (4.45,\y) -- (3.55,\y);
+  }
+\end{tikzpicture}
+
+More enters than leaves:
+\[
+\theta_\gamma\equiv\nabla\!\cdot\bv_\gamma<0.
+\]
+Photons accumulate, so the patch becomes denser and hotter.
+\end{block}
+\end{columns}
+\key{Continuity counts net flow through a boundary: $\dot\Theta_0=-\theta_\gamma/3+\dot\Phi$. The velocity matters through its spatial variation.}
+\end{frame}
+
+\begin{frame}{Baryon loading: photon pressure moves two fluids}
+Momentum density is proportional to $(\rho+P)\bv$.
+\[
+\boxed{R=\frac{\bar\rho_b}{4\bar\rho_\gamma/3}}
+\quad\Longrightarrow\quad
+\text{total inertia}=\frac{4\bar\rho_\gamma}{3}(1+R).
+\]
+Photons supply the pressure while photons and baryons both have to accelerate. For an adiabatic compression, $\delta\rho_b=R\delta\rho_\gamma$, hence
+\[c_s^2=\frac{\delta P_\gamma}{\delta\rho_\gamma+\delta\rho_b}
+=\boxed{\frac1{3(1+R)}}.\]
+\key{$R$ is the extra baryon inertia measured in units of photon inertia. Larger $R$ lowers the sound speed.}
+\end{frame}
+
+\begin{frame}{As the Universe expands, baryons become harder to move}
+\plot{sound-horizon-calculation.pdf}{The left panel shows $R=3\bar\rho_b/(4\bar\rho_\gamma)$; the right shows $c_s/c=[3(1+R)]^{-1/2}$. Cosmic time runs from high redshift on the right toward low redshift on the left.}
+\end{frame}
+
+\begin{frame}{Step 1: converging motion compresses the photons}
+\[\boxed{\dot\Theta_0=-\frac13\theta_\gamma+\dot\Phi.}\]
+\begin{itemize}
+\item $\Theta_0=\delta_\gamma/4$ measures the photon-temperature monopole.
+\item $\theta_\gamma=i\bk\cdot\bv_\gamma<0$ means that the photon flow converges, so $\Theta_0$ rises.
+\item $\dot\Phi$ accounts for compression caused by changing spatial curvature.
+\end{itemize}
+The equivalent density equation is $\dot\delta_\gamma=-4\theta_\gamma/3+4\dot\Phi$.
+\ask{With constant $\Phi$, what sign of $\theta_\gamma$ makes a patch hotter?}
+\end{frame}
+
+\begin{frame}{Step 2: pressure and gravity set photons in motion}
+\[
+\dot\theta_\gamma=
+\underbrace{k^2\Theta_0}_{\text{pressure}}
++\underbrace{k^2\Psi}_{\text{gravity}}
++\underbrace{\Gamma_c(\theta_b-\theta_\gamma)}_{\text{scattering}},
+\]
+\[\Gamma_c\equiv-\dot{\widetilde\tau}=a n_e\sigma_T>0.\]
+\begin{itemize}
+\item A temperature crest has higher photon pressure, which pushes material away from it.
+\item Gravity pulls the fluid into potential wells.
+\item Scattering acts whenever the photon and baryon flows differ.
+\end{itemize}
+\credit{There is no photon Hubble drag: $\Hs(1-3w_\gamma)\theta_\gamma=0$ because $w_\gamma=1/3$. The signs look different from vector forces because $\theta$ is a divergence. Leading tight coupling neglects the photon quadrupole; $\Gamma_c=a\Gamma_T$.}
+\end{frame}
+
+\begin{frame}{Step 3: scattering transfers momentum between the fluids}
+\vspace{-2mm}
+\[
+\dot\theta_b+\underbrace{\Hs\theta_b}_{\text{expansion drag}}
+=k^2\Psi+\frac{\Gamma_c}{R}(\theta_\gamma-\theta_b).
+\]
+\credit{Baryon pressure $c_b^2k^2\delta_b$ is negligible because $c_b^2\sim T_b/m_b\ll1$; photon pressure is transmitted by scattering.}
+The photon--baryon \emph{slip} measures their relative flow:
+\[\boxed{\Delta\theta\equiv\theta_\gamma-\theta_b}.\]
+The collision terms exchange momentum internally:
+\[\left.\dot\theta_\gamma\right|_{\rm coll}
++R\left.\dot\theta_b\right|_{\rm coll}=0.\]
+\key{Scattering reduces the slip. The same force density gives a baryon acceleration proportional to $1/R$ because $R$ measures baryon inertia.}
+\end{frame}
+
+\begin{frame}{Tight coupling means that the slip rapidly decays}
+Keeping only the collision terms gives
+\[
+\frac{d\Delta\theta}{d\tau}=-\Gamma_c(1+R^{-1})\Delta\theta.
+\]
+\begin{center}
+\includegraphics[width=.72\linewidth,height=.34\textheight,keepaspectratio]{collision-demonstration.pdf}
+\end{center}
+\credit{Here $u=\Gamma_c(\tau-\tau_i)$ counts elapsed scattering times in a fixed-$R$, fixed-rate example. Left: the two flows approach an inertia-weighted common value. Right: the slip falls exponentially.}
+\key{After this short transient, $\theta_\gamma\simeq\theta_b\equiv\theta$. We can then describe one tightly coupled fluid.}
+\end{frame}
+
+\begin{frame}{Step 4: one momentum equation for the coupled plasma}
+\small
+Start from the two equations, weighting the baryon equation by its inertia:
+\[
+\begin{aligned}
+\text{photon Euler:}\quad
+\dot\theta_\gamma
+ &=k^2\Theta_0+k^2\Psi
+   +\Gamma_c(\theta_b-\theta_\gamma),\\
+R\times\text{baryon Euler:}\quad
+R\dot\theta_b+\Hs R\theta_b
+ &=Rk^2\Psi
+   +\Gamma_c(\theta_\gamma-\theta_b).
+\end{aligned}
+\]
+Add them: the collision terms cancel. With
+$\theta_\gamma\simeq\theta_b\equiv\theta$,
+\[(1+R)\dot\theta+\Hs R\theta=k^2\Theta_0+(1+R)k^2\Psi.\]
+Using $\dot R=\Hs R$ and dividing by $1+R$ gives
+\[\boxed{\dot\theta+\frac{\dot R}{1+R}\theta
+=\frac{k^2}{1+R}\Theta_0+k^2\Psi.}\]
+\key{Photon pressure is divided by the total inertia $1+R$, while gravity accelerates both components.}
+\credit{The slip is small, but $\Gamma_c(\theta_\gamma-\theta_b)$ remains the finite internal force that transfers photon momentum to baryons.}
+\end{frame}
+
+\begin{frame}{Step 5: continuity and Euler give an acoustic oscillator}
+Differentiate continuity and use the combined momentum equation to eliminate $\theta$:
+\[
+\boxed{\ddot\Theta_0+
+\underbrace{\frac{\dot R}{1+R}\dot\Theta_0}_{\text{changing inertia}}+
+\underbrace{k^2c_s^2\Theta_0}_{\text{pressure restoring force}}
+=\underbrace{S_{\rm grav}}_{\text{gravitational driving}}}
+\]
+\[S_{\rm grav}=\ddot\Phi+\frac{\dot R}{1+R}\dot\Phi-\frac{k^2}{3}\Psi.\]
+\begin{itemize}
+\item The natural frequency is approximately $k c_s$: short waves oscillate faster.
+\item Baryon inertia lowers $c_s$ and changes the amplitude.
+\item Constant or evolving potentials displace or drive the oscillation.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Why introduce an effective temperature?}
+The emitting plasma has intrinsic perturbation $\Theta_0$.
+\medskip\par A photon leaving a static potential acquires fractional shift $\Psi_*-\Psi_{\rm obs}$.
+\medskip\par The observer term is common to all directions. The emission contribution is
+\[\boxed{X=\Theta_0+\Psi.}\]
+\key{$X$ is the temperature perturbation at emission after including the gravitational redshift from the emitting potential.}
+Doppler shifts and changing potentials along the path will enter Lecture 2.
+\end{frame}
+
+\begin{frame}{Make the driving and equilibrium explicit}
+\small
+\[
+\begin{aligned}
+\ddot X+\frac{\dot R}{1+R}\dot X+k^2c_s^2X
+={}&\ddot\Phi+\ddot\Psi+\frac{\dot R}{1+R}(\dot\Phi+\dot\Psi)\\
+&{}-k^2c_s^2R\Psi.
+\end{aligned}
+\]
+\normalsize Freeze $R,\Phi,\Psi$ for a simple solvable model:
+\[\boxed{\ddot X+k^2c_s^2(X+R\Psi)=0.}\]
+\key{The force vanishes at $X=-R\Psi$, so baryons shift the centre of the oscillation away from zero.}
+\credit{Freezing coefficients is a toy approximation. Expansion-related amplitude evolution is distinct from dissipative diffusion damping.}
+\end{frame}
+
+\begin{frame}{Derive the equilibrium from force balance}
+No velocity or acceleration means pressure balances gravity:
+\[0=\frac{k^2}{1+R}\Theta_{0,\rm eq}+k^2\Psi.\]
+\[\Theta_{0,\rm eq}=-(1+R)\Psi,\qquad
+\boxed{X_{\rm eq}=-R\Psi.}\]
+\begin{itemize}
+\item Photons must support their own inertia \emph{and} the baryons.
+\item For $R=0$, intrinsic temperature and gravitational redshift cancel at equilibrium.
+\item For $\Psi<0$ and $R>0$, the effective-temperature offset is positive.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{How to read the baryon-loading toy model}
+\small
+The vertical axis divides by $|\Psi|$ to remove the arbitrary amplitude of this linear mode.
+\[
+s=k(\tau-\tau_i),\qquad
+\varphi=k r_s=\frac{s}{\sqrt{3(1+R)}}.
+\]
+\begin{center}
+\includegraphics[width=.78\linewidth,height=.36\textheight,keepaspectratio]{oscillator-demonstration.pdf}
+\end{center}
+\begin{itemize}
+\item \textbf{Left, same $s$:} larger $R$ oscillates more slowly.
+\item \textbf{Right, same $\varphi$:} aligned cycles expose the shifted equilibrium and unequal extrema.
+\end{itemize}
+\credit{$s$ measures elapsed time in wavelength units; $\varphi=kr_s$ is the acoustic phase derived from the sound speed. Lines solve one Fourier mode; circles show the analytic solution.}
+\end{frame}
+
+\begin{frame}{The sound horizon keeps track of acoustic phase}
+\[r_s(\tau)=\int_0^\tau c_s\,d\tau',\qquad
+X+R\Psi=C_1\cos(kr_s)+C_2\sin(kr_s).\]
+\begin{itemize}
+\item A displaced fluid with negligible initial velocity starts in the cosine phase.
+\item Adiabatic growing modes have coherent temporal phases.
+\item Recombination takes a snapshot at $r_s(\tau_*)$.
+\end{itemize}
+\key{Extrema satisfy $k_n r_s(\tau_*)\simeq n\pi$: a harmonic series.}
+\credit{The expression is exact for frozen coefficients; slowly evolving coefficients also change the amplitude and equilibrium.}
+\end{frame}
+
+\begin{frame}{Temperature and velocity are out of phase}
+\plot{acoustic-phases-plot.pdf}{The horizontal coordinate is acoustic phase $k r_s$. The curves show normalized phase relations; their vertical scales do not represent equal observable amplitudes.}
+\end{frame}
+
+\begin{frame}{Projection and diffusion set the final angular pattern}
+\[\theta_s=\frac{r_s(\tau_*)}{\chi_*},\qquad \ell_A\simeq\frac{\pi}{\theta_s}.\]
+\begin{itemize}
+\item Sound supplies a ruler; the distance turns it into an angle.
+\item Baryon loading modulates compression versus rarefaction peaks.
+\item Potentials decaying near equality boost early-entering modes: radiation driving.
+\item Photon diffusion damps short waves: amplitude $\sim e^{-k^2/k_D^2}$.
+\item Finite last-scattering width averages over nearby phases.
+\end{itemize}
+\credit{$\ell_A$ gives the characteristic spacing. Potential evolution and projection shift the individual peaks, including the first.}
+\end{frame}
+
+\begin{frame}{Explore the physics in the notebook}
+\Large\colabone\normalsize
+\medskip
+\begin{enumerate}
+\item Compare 13.6 eV with the Saha half-ionization temperature.
+\item Predict the final common velocity when $R$ changes.
+\item Increase baryon loading: what happens to frequency and equilibrium?
+\end{enumerate}
+\key{Make a prediction before rerunning each example.}
+\credit{All plots are included in these slides, so the session also works without an internet connection.}
+\end{frame}
+
+\begin{frame}{The physical story in five steps}
+\begin{enumerate}
+\item Expansion cools the photon bath.
+\item Neutral-atom formation reduces opacity.
+\item Gravity and photon pressure create acoustic oscillations.
+\item Baryons shift equilibrium; diffusion damps short scales.
+\item Last scattering projects a snapshot onto our sky.
+\end{enumerate}
+\key{Next: derive the angular power spectrum and measure it with real data.}
+\end{frame}

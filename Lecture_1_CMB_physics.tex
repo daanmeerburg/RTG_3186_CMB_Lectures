@@ -1,0 +1,997 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper,margin=2.35cm]{geometry}
+\usepackage{amsmath,amssymb,amsfonts,bm,booktabs,enumitem,graphicx,microtype,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+\setlength{\parskip}{0.72em}
+\setlength{\parindent}{0pt}
+\setlist[itemize]{topsep=0.2em,itemsep=0.15em}
+\setlist[enumerate]{topsep=0.2em,itemsep=0.15em}
+
+% Notation follows the Particle Cosmology lecture notes.
+\newcommand{\be}{\begin{eqnarray}}
+\newcommand{\non}{\nonumber\\}
+\newcommand{\ee}{\end{eqnarray}}
+\newcommand{\Hs}{\mathcal H}
+\newcommand{\Rs}{\mathcal R}
+\newcommand{\bk}{\mathbf k}
+\newcommand{\bx}{\mathbf x}
+\newcommand{\bn}{\hat{\mathbf n}}
+\newcommand{\bv}{\mathbf v}
+\newcommand{\dd}{\mathrm d}
+\newcommand{\Mpl}{M_{\rm Pl}}
+\newcommand{\keyresult}[1]{\begin{center}\fbox{\parbox{0.91\linewidth}{\textbf{Key result.} #1}}\end{center}}
+
+\title{The Cosmic Microwave Background I\\
+The expanding Universe, recombination, and acoustic oscillations}
+\author{RTG 3186 Kickoff Fall Workshop, Staufen}
+\date{29 September--1 October 2026}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fbox{\parbox{0.91\linewidth}{
+\textbf{Starting point and goal.}
+No previous cosmology is assumed. We first build the homogeneous expanding Universe,
+then follow its cooling until neutral atoms form. Finally we add small perturbations
+and derive why the photon--baryon plasma oscillates. Lecture II will project those
+oscillations onto the sky, derive $C_\ell$, and connect theory to real data.}}
+\end{center}
+
+Unless units are displayed explicitly, we use natural units
+$c=\hbar=k_B=1$. We restore $c$ occasionally when discussing distances or emphasizing
+their physical interpretation. This is the same convention used in the Particle
+Cosmology notes.
+
+% ============================================================
+\section{What are we trying to explain?}
+
+The cosmic microwave background (CMB) is electromagnetic radiation arriving from
+every direction. Its mean spectrum is extremely close to a blackbody,
+\be
+B_\nu(T)=\frac{2h\nu^3}{c^2}\frac{1}{\exp(h\nu/k_BT)-1},
+\qquad T_0\simeq 2.725\ {\rm K}.
+\ee
+The word \emph{microwave} describes the wavelength today. The same photons had much
+higher energies in the past. The word \emph{background} means that, after removing
+local emission, it fills the entire sky.
+
+We write the temperature in direction $\bn$ as
+\be
+T(\bn)=\bar T\,[1+\Theta(\bn)],
+\qquad \Theta(\bn)\equiv\frac{\delta T(\bn)}{\bar T}.
+\ee
+The sky is very uniform, but not perfectly so:
+\[
+|\Theta|\sim10^{-5}
+\]
+after removal of the dipole induced mostly by our motion. These tiny variations are
+the central observable of these lectures.
+
+\paragraph{Three facts that demand an explanation.}
+\begin{enumerate}
+\item Why is the spectrum blackbody, and why is its temperature only $2.725$ K today?
+\item Why do photons reach us from a particular early epoch rather than from arbitrarily far back?
+\item Why does the angular pattern contain a harmonic sequence of acoustic peaks?
+\end{enumerate}
+
+The answers are, respectively: an expanding thermal Universe, recombination and
+decoupling, and sound waves in the primordial photon--baryon plasma.
+
+The near-uniformity and the small variations carry complementary information. The
+mean temperature and spectrum probe the thermal history, while the $10^{-5}$
+anisotropies probe gravity, matter content, geometry, and the initial conditions.
+
+% ============================================================
+\section{The homogeneous expanding Universe}
+
+\subsection{Homogeneity and isotropy}
+On sufficiently large scales, the Universe has no preferred position and no preferred
+direction. These statements form the \emph{cosmological principle}. They do not say
+that the Universe is exactly smooth on small scales: stars, galaxies, and clusters are
+the perturbations that we later place on top of the smooth background.
+
+Homogeneity and isotropy constrain the spacetime metric to the Friedmann--Lema\^{i}tre--
+Robertson--Walker (FLRW) form. For a spatially flat Universe,
+\be
+\boxed{ds^2=-dt^2+a^2(t)\delta_{ij}dx^idx^j.}
+\label{eq:FLRW}
+\ee
+Here $t$ is cosmic time, $\bx$ is a \emph{comoving} coordinate, and $a(t)$ is the
+scale factor. We set $a(t_0)=1$ today. Two observers at fixed comoving coordinates
+have physical separation
+\be
+d_{\rm phys}(t)=a(t)|\Delta\bx|.
+\ee
+Expansion means that $a(t)$ grows. It is space between freely moving comoving
+observers that changes; galaxies are not projectiles moving away from a central point.
+
+\subsection{The Hubble parameter and Hubble's law}
+Differentiate the physical separation:
+\be
+\dot d_{\rm phys}=\frac{\dot a}{a}d_{\rm phys}=H(t)d_{\rm phys},
+\qquad H(t)\equiv\frac{\dot a}{a}.
+\ee
+In this subsection a dot means $d/dt$. For nearby objects this is Hubble's law,
+$v=Hd$. The Hubble time $H^{-1}$ is the characteristic expansion timescale; the
+Hubble length $cH^{-1}$ is a useful characteristic distance. It is not, in general,
+the same as the age or the causal horizon.
+
+\subsection{Matter as a perfect fluid}
+The homogeneous contents are described by energy density $\rho(t)$ and pressure
+$P(t)$. For a perfect fluid,
+\be
+T_{\mu\nu}=(\rho+P)U_\mu U_\nu+Pg_{\mu\nu}.
+\ee
+In the comoving frame $U^\mu=(1,0,0,0)$. Einstein's equations applied to the flat
+FLRW metric give
+\be
+\boxed{H^2=\frac{8\pi G}{3}\rho,}
+\label{eq:Friedmann}
+\ee
+\be
+\frac{\ddot a}{a}=-\frac{4\pi G}{3}(\rho+3P).
+\label{eq:acceleration}
+\ee
+The first Friedmann equation says that the expansion rate is determined by the total
+energy density. The second says that pressure also gravitates.
+
+It is often useful to introduce the reduced Planck mass,
+\[
+M_{\rm Pl}^{-2}=8\pi G,
+\qquad H^2=\frac{\rho}{3M_{\rm Pl}^2}.
+\]
+
+\subsection{Local energy conservation and the equation of state}
+In general relativity, energy and momentum obey the \emph{local}, covariant
+conservation law $\nabla_\mu T^{\mu\nu}=0$. For a homogeneous fluid this yields
+\be
+\boxed{\dot\rho+3H(\rho+P)=0.}
+\label{eq:continuity}
+\ee
+This does \emph{not} say that the total energy of an expanding Universe is constant.
+A general FLRW spacetime has no time-translation symmetry that would supply a
+globally conserved energy of the usual kind. In particular, the energy in a fixed
+comoving region need not be constant.
+
+The local equation has a useful thermodynamic form. A region with fixed comoving
+volume has physical volume $V\propto a^3$ and fluid energy $E=\rho V$, so
+\[
+d(\rho V)=-P\,dV.
+\]
+This is the pressure--volume work relation: expansion changes the fluid energy when
+$P\ne0$. For radiation, $E_\gamma\propto a^{-1}$ because photons redshift; for vacuum
+energy, $E_\Lambda\propto a^3$. Neither example violates local covariant conservation.
+The work analogy does not require an external reservoir into which the energy of
+redshifted photons must flow.
+
+For a separately conserved component with $P=w\rho$ and constant $w$,
+Eq.~\eqref{eq:continuity} gives
+\be
+\boxed{\rho(a)=\rho_0a^{-3(1+w)}.}
+\ee
+
+\begin{center}
+\begin{tabular}{@{}llll@{}}\toprule
+Component & $w$ & Evolution & Reason\\ \midrule
+Non-relativistic matter & $0$ & $\rho_m\propto a^{-3}$ & number dilution\\
+Radiation & $1/3$ & $\rho_r\propto a^{-4}$ & dilution $+$ redshift\\
+Vacuum energy & $-1$ & $\rho_\Lambda={\rm constant}$ & energy of empty space\\ \bottomrule
+\end{tabular}
+\end{center}
+
+Inserting these scalings in the Friedmann equation gives
+\be
+a(t)\propto t^{1/2}\quad&\text{during radiation domination},\non
+a(t)\propto t^{2/3}\quad&\text{during matter domination},\non
+a(t)\propto e^{Ht}\quad&\text{during vacuum domination}.
+\ee
+
+\keyresult{The minimum background cosmology is
+$ds^2=-dt^2+a^2d\bx^2$, $H=\dot a/a$,
+$H^2=8\pi G\rho/3$, and $\dot\rho+3H(\rho+P)=0$. Everything in the CMB evolves on
+this background.}
+
+\subsection{Redshift and the cooling of radiation}
+Consider two successive wave crests propagating through the expanding metric. Their
+physical separation stretches with $a$, so
+\be
+\lambda\propto a,
+\qquad \nu\propto a^{-1},
+\qquad E_\gamma=h\nu\propto a^{-1}.
+\ee
+Redshift is defined by
+\be
+1+z\equiv\frac{\lambda_{\rm obs}}{\lambda_{\rm em}}
+=\frac{a(t_0)}{a(t_{\rm em})}=\frac{1}{a(t_{\rm em})}.
+\ee
+A blackbody remains a blackbody under this uniform redshift, with
+\be
+\boxed{T(a)=\frac{T_0}{a}=T_0(1+z).}
+\label{eq:Tredshift}
+\ee
+This connects looking to large redshift with looking back to a hotter, denser Universe.
+At $z\simeq1100$, Eq.~\eqref{eq:Tredshift} gives $T\simeq3000$ K.
+
+Radiation scales as $a^{-4}$ rather than $a^{-3}$ because there are two effects:
+the number of photons per physical volume gives $a^{-3}$, while the energy of every
+photon contributes one additional factor $a^{-1}$.
+
+% ============================================================
+\section{Light propagation, conformal time, and horizons}
+
+For photon propagation it is convenient to define conformal time
+\be
+d\tau\equiv\frac{dt}{a(t)}.
+\ee
+The FLRW metric becomes
+\be
+ds^2=a^2(\tau)\left[-d\tau^2+\delta_{ij}dx^idx^j\right].
+\ee
+Apart from the overall factor $a^2$, this looks like Minkowski space. Introduce the
+\emph{comoving radial coordinate} $\chi=|\bx|$, with the observer at $\chi=0$.
+At a fixed time the physical radial distance is $a(\tau)\chi$; in spherical
+coordinates $d\bx^2=d\chi^2+\chi^2d\Omega^2$.
+A radial light ray has $d\Omega=0$ and $ds^2=0$, hence $|d\chi|=d\tau$ when $c=1$.
+For a photon approaching us, $d\chi/d\tau=-1$: its radial coordinate decreases as
+time increases. The positive comoving distance to an object observed at redshift
+$z$ is consequently
+\be
+\chi(z)=\tau_0-\tau(z)=\int_0^z\frac{dz'}{H(z')}.
+\label{eq:distance}
+\ee
+
+From here onward, as in the perturbation sections of the Particle Cosmology notes,
+a dot denotes a conformal-time derivative. We distinguish
+\be
+\Hs\equiv\frac{\dot a}{a}=aH,
+\ee
+where $H$ is the usual cosmic-time Hubble parameter.
+
+The comoving particle horizon at time $\tau$ is the maximum comoving distance a signal
+could have travelled since the beginning,
+\be
+d_H^{\rm com}(\tau)=\tau-\tau_{\rm initial}\simeq\tau.
+\ee
+Here the last equality chooses the origin of conformal time at the beginning.
+The comoving Hubble length is $(aH)^{-1}=\Hs^{-1}$. It measures an expansion
+timescale expressed as a distance, whereas the particle horizon counts the full
+distance light could have travelled. They are related but need not coincide.
+Pressure disturbances travel more slowly than light; their corresponding causal
+distance will be the \emph{sound horizon}, introduced in Section~\ref{sec:acoustics}.
+
+\subsection{Why the CMB is a two-dimensional image}
+If photons last scattered at conformal time $\tau_*$, we observe them today at
+$\tau_0$ on a sphere of comoving radius
+\be
+\boxed{\chi_*=\tau_0-\tau_*.}
+\ee
+A patch of comoving transverse size $L_{\rm com}$ at last scattering appears as an
+angular scale on this sphere. For a small angle,
+\be
+\theta\simeq\frac{L_{\rm com}}{\chi_*}.
+\ee
+Both lengths are comoving: using physical lengths instead multiplies numerator and
+denominator by the same $a_*$. This simple geometry will later connect sound waves
+in three dimensions to angular patterns on our sky.
+
+% ============================================================
+\section{A short thermal history of the photon bath}
+
+At sufficiently high temperature the Universe is a plasma. Photons, electrons,
+positrons, nuclei, neutrinos, and other species interact. A microscopic interaction
+rate $\Gamma$ should be compared with the macroscopic expansion rate $H$:
+\be
+\Gamma\gg H &: & \text{many interactions per expansion time; equilibrium},\non
+\Gamma\lesssim H &: & \text{interactions cannot keep up; decoupling}.
+\ee
+This single comparison connects particle physics to cosmology.
+
+For a species in thermal equilibrium, the distribution is
+\be
+f(E)=\frac{1}{\exp[(E-\mu)/T]\pm1},
+\ee
+with $+$ for fermions and $-$ for bosons. Photons have vanishing chemical potential
+in full equilibrium. The photon number and energy densities scale as
+\be
+n_\gamma=\frac{2\zeta(3)}{\pi^2}T^3,
+\qquad \rho_\gamma=\frac{\pi^2}{15}T^4.
+\ee
+The observed blackbody spectrum therefore tells us that the radiation was once in
+excellent thermal equilibrium. Expansion subsequently redshifted the spectrum without
+changing its Planck form.
+
+The broad sequence relevant here is
+\[
+\begin{split}
+\text{hot ionized plasma}&\longrightarrow\text{neutral atoms form}\\
+&\longrightarrow\text{photons free-stream}\longrightarrow\text{CMB observed today}.
+\end{split}
+\]
+
+% ============================================================
+\section{Recombination, decoupling, and last scattering}
+
+\subsection{Why the early Universe was opaque}
+Free electrons Thomson-scatter photons with cross section
+\be
+\sigma_T=\frac{8\pi}{3}\left(\frac{\alpha}{m_e}\right)^2
+\ee
+in natural units. The scattering rate is roughly
+\be
+\Gamma_T=n_e\sigma_T.
+\ee
+At early times $n_e$ is large and $\Gamma_T/H\gg1$. A photon travels only a short
+mean free path $\lambda_{\rm mfp}=(n_e\sigma_T)^{-1}$ before scattering, so the plasma
+is opaque. Coulomb scattering couples electrons to protons; Thomson scattering couples
+electrons to photons. The three components behave approximately as one fluid.
+
+\subsection{Deriving the Saha equation: why recombination is below 13.6 eV}
+As the temperature falls, electrons and protons form neutral hydrogen,
+\[
+p+e^-\leftrightarrow H^0+\gamma.
+\]
+First neglect helium and excited hydrogen levels. Here $n_p$ counts
+\emph{free protons}, $n_e$ counts \emph{free electrons}, and $n_{H^0}$ counts
+neutral hydrogen atoms. A proton bound inside a neutral atom is included in
+$n_{H^0}$, not in the free-proton species density $n_p$. Thus
+\[
+n_H=n_p+n_{H^0}
+\]
+is the \emph{total number density of hydrogen nuclei}, whether free or bound.
+Only in a fully ionized gas is $n_H\simeq n_p$. Recombination changes how nuclei
+are partitioned between free protons and neutral atoms; it does not destroy
+nuclei. Their number in a comoving volume is conserved, while their physical
+density $n_H$ dilutes as $a^{-3}$.
+
+Charge neutrality gives $n_e=n_p$. The useful ionization fraction is therefore
+\[
+x_e\equiv\frac{n_e}{n_H},\qquad
+n_e=n_p=x_en_H,\qquad n_{H^0}=(1-x_e)n_H.
+\]
+Normalizing instead by the free-proton density would give $n_e/n_p=1$
+whenever free charges are present, and would not measure the fraction of
+hydrogen that is ionized.
+
+\paragraph{From chemical equilibrium to number densities.}
+For the reaction above, equilibrium requires
+\[
+\mu_p+\mu_e=\mu_{H^0}+\mu_\gamma=\mu_{H^0},
+\]
+because a blackbody photon bath has $\mu_\gamma=0$. The atoms, protons, and electrons
+are non-relativistic and dilute. Integrating their Maxwell--Boltzmann distributions
+over momentum gives, with chemical potentials including rest energy,
+\[
+n_i=g_i\int\frac{d^3p}{(2\pi)^3}
+e^{-(m_i+p^2/2m_i-\mu_i)/T}
+=g_i\left(\frac{m_iT}{2\pi}\right)^{3/2}e^{(\mu_i-m_i)/T}.
+\]
+Substitute this expression for each of the three species before simplifying:
+\[
+\begin{aligned}
+\frac{n_en_p}{n_{H^0}}
+={}&\frac{g_eg_p}{g_{H^0}}
+\left(\frac{m_em_p}{m_{H^0}}\frac{T}{2\pi}\right)^{3/2}\\
+&\times\exp\!\left(\frac{\mu_e+\mu_p-\mu_{H^0}}{T}\right)
+\exp\!\left(-\frac{m_e+m_p-m_{H^0}}{T}\right).
+\end{aligned}
+\]
+Chemical equilibrium sets the first exponential to unity. The mass
+difference in the second is $m_e+m_p-m_{H^0}=E_I$, the hydrogen binding energy:
+the bound atom is lighter than its separated constituents. Using
+$m_{H^0}\simeq m_p$ \emph{only in the prefactor} gives
+\[
+\frac{n_en_p}{n_{H^0}}\simeq
+\frac{g_eg_p}{g_{H^0}}\left(\frac{m_eT}{2\pi}\right)^{3/2}e^{-E_I/T}.
+\]
+The small binding-energy mass difference must be retained in the exponential.
+For ground-state hydrogen, summing the spin states gives $g_e=2$, $g_p=2$,
+$g_{H^0}=4$, so the degeneracy ratio is unity. Now explicitly substitute the
+free and neutral densities in terms of the ionization fraction:
+\[
+\frac{n_en_p}{n_{H^0}}
+=\frac{(x_en_H)(x_en_H)}{(1-x_e)n_H}
+=n_H\frac{x_e^2}{1-x_e}.
+\]
+Equating the two expressions and dividing by $n_H$ gives the Saha equation
+in this approximation,
+\be
+\boxed{
+\frac{x_e^2}{1-x_e}=\frac{1}{n_H}
+\left(\frac{m_eT}{2\pi}\right)^{3/2}e^{-E_I/T},
+\qquad E_I=13.6\ {\rm eV}.}
+\label{eq:Saha}
+\ee
+\paragraph{What sets the temperature?}
+The guess $T\sim13.6$ eV comes from comparing a typical thermal photon energy with
+the atomic ionization threshold. It is \emph{not} a conclusion of the Saha equation.
+That equation also contains a large density-dependent prefactor. Define
+$\eta_H=n_H/n_\gamma$, of order $10^{-9}$, and use the blackbody photon density:
+\[
+\frac{x_e^2}{1-x_e}=
+\frac{\pi^2}{2\zeta(3)\eta_H}
+\left(\frac{m_e}{2\pi T}\right)^{3/2}e^{-E_I/T}.
+\]
+At $T=E_I$ the right-hand side is enormous, implying $x_e\simeq1$. To make it of
+order unity, the exponential must compensate the prefactor: one needs
+$E_I/T\sim40$, not $E_I/T\sim1$. For example, setting $x_e=1/2$ and using a
+representative cosmological hydrogen abundance gives an equilibrium temperature
+near $0.32$ eV. Physically, there are roughly a billion photons per baryon: even
+when a typical photon is too soft to ionize hydrogen, the high-energy tail can
+keep the gas ionized.
+
+The word \emph{recombination} refers to neutral atoms forming. The word \emph{decoupling}
+refers to photons ceasing to scatter efficiently. The events are closely related but
+not identical. Saha determines an \emph{equilibrium ionization fraction}, not the
+last-scattering time. Accurate calculations also require the departure from Saha
+equilibrium, excited atomic levels, the escape of Lyman-$\alpha$ photons, and
+two-photon decays. Last scattering occurs near $z_*\simeq1100$, at
+$T_*\simeq0.26$ eV (roughly $0.3$ eV). We use Saha for the equilibrium reasoning;
+the scattering history below determines when photons can reach us.
+
+\subsection{Optical depth and the visibility function}
+Following the notation of the Particle Cosmology notes, define the optical depth from
+conformal time $\tau$ to today by
+\be
+\tilde\tau(\tau)=\int_\tau^{\tau_0}a(\tau')n_e(\tau')\sigma_T\,d\tau'.
+\label{eq:opticaldepth}
+\ee
+It follows from this definition that
+\be
+\dot{\tilde\tau}=-a n_e\sigma_T<0,
+\qquad -\dot{\tilde\tau}=a n_e\sigma_T>0.
+\ee
+This $\tilde\tau$ is not conformal time; the tilde is important. The probability that
+a photon travels from $\tau$ to us without scattering is $e^{-\tilde\tau}$. Therefore
+\be
+\boxed{g(\tau)=-\dot{\tilde\tau}\,e^{-\tilde\tau}}
+\label{eq:visibility}
+\ee
+is the \emph{visibility function}: the probability density that a photon observed
+today last scattered at time $\tau$. It is sharply peaked at $\tau_*$ but has a finite
+width. Thus ``the last-scattering surface'' is a thin shell, not an infinitely thin
+mathematical sphere.
+
+\begin{center}
+\begin{tabular}{@{}p{.29\linewidth}p{.63\linewidth}@{}}\toprule
+Quantity & Approximate value\\ \midrule
+Redshift of last scattering & $z_*\simeq1100$\\
+Temperature & $T_*\simeq3000$ K $\simeq0.3$ eV\\
+Age of the Universe & $t_*\simeq3.8\times10^5$ yr\\
+Present mean CMB temperature & $T_0\simeq2.725$ K\\ \bottomrule
+\end{tabular}
+\end{center}
+
+\keyresult{Recombination removes free electrons, the Thomson mean free path grows rapidly,
+and the visibility function peaks. We see the CMB because the Universe changes from
+opaque to transparent.}
+
+% ============================================================
+\section{From an exactly smooth Universe to anisotropies}
+
+An exactly FLRW Universe would produce an exactly uniform CMB. We therefore perturb
+the metric and matter fields around their homogeneous values,
+\be
+g_{\mu\nu}(\tau,\bx)&=&\bar g_{\mu\nu}(\tau)+\delta g_{\mu\nu}(\tau,\bx),\non
+\rho_i(\tau,\bx)&=&\bar\rho_i(\tau)[1+\delta_i(\tau,\bx)].
+\ee
+The observed amplitude $10^{-5}$ motivates linear perturbation theory: keep only
+terms first order in $\delta_i$, metric potentials, velocities, and $\Theta$.
+
+Scalar, vector, and tensor perturbations evolve independently at linear order. Density
+perturbations are scalar, so we focus on scalar modes. In conformal Newtonian gauge,
+using precisely the convention of the Particle Cosmology notes,
+\be
+\boxed{ds^2=a^2(\tau)\left[-(1+2\Psi)d\tau^2
++(1-2\Phi)\delta_{ij}dx^idx^j\right].}
+\label{eq:newtonian}
+\ee
+$\Psi$ acts like a Newtonian gravitational potential and $\Phi$ is the perturbation
+of spatial curvature. Equation~\eqref{eq:newtonian} is a \emph{perturbed metric};
+the perturbed Einstein equations determine how these potentials respond to matter.
+
+\paragraph{Why just two scalar potentials?}
+Before choosing coordinates, the scalar part of a metric perturbation contains four
+functions: a time--time perturbation, a scalar time--space shift, a spatial trace,
+and a scalar spatial shear. There are two scalar coordinate freedoms: a change of
+time slicing and a longitudinal change of spatial coordinates. Newtonian gauge uses
+them to set the shift and scalar shear to zero, leaving $\Psi$ and $\Phi$.
+This counts scalar metric functions after a coordinate choice, \emph{not two
+independently propagating gravitational degrees of freedom}. The scalar Einstein
+constraint equations relate the potentials to density and momentum perturbations.
+Matter supports scalar dynamics, including the sound waves we derive below. The two
+freely propagating gravitational degrees of freedom of general relativity are the
+two \emph{tensor} polarizations of gravitational waves, outside our present scalar
+discussion.
+
+\paragraph{What is anisotropic stress, and why do neutrinos produce it?}
+Pressure is momentum flux: particles crossing a surface carry momentum through it.
+An isotropic distribution has the same pressure in every direction. Its departure
+from isotropy is the traceless part of the spatial stress tensor,
+\[
+T^i{}_j=P\delta^i{}_j+\pi^i{}_j,\qquad \pi^i{}_i=0.
+\]
+The tensor $\pi^i{}_j$ is called \emph{anisotropic stress}. In particle language it
+comes from a quadrupole in the angular distribution of momenta, after removing the
+isotropic pressure and bulk motion. A scalar perturbation can produce such a
+quadrupole: its spatial gradient supplies a preferred direction locally, without
+making the background Universe anisotropic.
+
+After neutrinos decouple, they travel freely from regions with different densities
+and temperatures. At a given point, particles arriving from different directions
+therefore have different distributions. With few collisions to isotropize those
+distributions, a quadrupole develops. Tightly coupled photons instead scatter often,
+which suppresses their quadrupole; non-relativistic baryons and cold dark matter
+have very small random-velocity stresses. Neutrinos are not unique in principle:
+photons also develop anisotropic stress as tight coupling fails and after decoupling.
+The traceless spatial Einstein equation relates this stress to $\Phi-\Psi$.
+For negligible total scalar anisotropic stress, $\Phi=\Psi$; free-streaming neutrinos
+make that equality approximate in the real Universe.
+
+\subsection{Fourier modes simplify linear evolution}
+A sound wave is a spatial pattern of alternating overdensities and underdensities.
+We decompose an arbitrary small perturbation into sinusoidal patterns, or Fourier
+modes. The vector $\bk$ specifies the direction of variation and its magnitude
+$k=|\bk|$ the inverse length scale. Write, for example,
+\be
+\delta_\gamma(\tau,\bx)=\int\frac{d^3k}{(2\pi)^3}
+\delta_\gamma(\tau,\bk)e^{i\bk\cdot\bx}.
+\ee
+Because the background is homogeneous and the equations are linear, different $\bk$
+modes evolve independently. A spatial derivative becomes multiplication by $i\bk$;
+coupled partial differential equations become ordinary differential equations in time
+for each $k$.
+
+The comoving wavelength is $\lambda_{\rm com}=2\pi/k$; $k^{-1}$ is the scale over
+which the phase changes by one radian, not a full wavelength. Comparing the gradient
+scale with the comoving Hubble length, we call a mode super-Hubble when $k\ll\Hs$
+and sub-Hubble when $k\gg\Hs$. For acoustic evolution the more precise comparison
+is with the sound horizon: appreciable phase evolution requires $kr_s\gtrsim1$.
+At last scattering, a transverse scale of order $k^{-1}$ subtends an angle of order
+$1/(k\chi_*)$. Lecture II will describe angular patterns by spherical-harmonic
+multipoles $\ell$, with the approximate correspondence $\ell\sim k\chi_*$.
+
+For photons $\rho_\gamma\propto T^4$. Linearizing gives
+\be
+\frac{\delta\rho_\gamma}{\bar\rho_\gamma}=4\frac{\delta T}{\bar T},
+\qquad\boxed{\Theta_0=\frac14\delta_\gamma.}
+\label{eq:ThetaMonopole}
+\ee
+Here $\Theta_0$ is the angle-averaged photon-temperature perturbation for a Fourier
+mode. It should not be confused with today's mean temperature $T_0$.
+
+More precisely, at each $(\tau,\bx)$ the photon perturbation also depends on the
+propagation direction $\bn$. For a scalar Fourier mode define
+$\mu=\hat{\bk}\cdot\bn$ and expand the angular dependence as
+\be
+\Theta(\tau,\bk,\mu)=\sum_{\ell=0}^{\infty}
+(-i)^\ell(2\ell+1)\Theta_\ell(\tau,k)P_\ell(\mu).
+\ee
+The monopole $\Theta_0$ is the directional average and determines the photon energy
+density. The dipole $\Theta_1$ is the forward--backward asymmetry and determines the
+net photon flux, or momentum density. It is therefore often called the
+\emph{photon temperature dipole}, the \emph{photon dipole}, or, more loosely, the
+\emph{photon velocity}. With this multipole convention and the Fourier convention
+used here,
+\be
+\boxed{\theta_\gamma=3k\Theta_1.}
+\ee
+The factor and sign are convention dependent. We reserve $\Theta_1$ for the angular
+dipole, $v_\gamma$ for a scalar velocity amplitude, and $\theta_\gamma$ for the
+velocity divergence. These are local moments of the photon momentum directions;
+they are conceptually distinct from the observed whole-sky coefficients $a_{\ell m}$.
+
+\subsection{Where did the perturbations come from?}
+Here we take the initial conditions as given: an early mechanism such as
+inflation produces an almost scale-invariant, nearly Gaussian, predominantly adiabatic
+curvature perturbation $\Rs_i(\bk)$. ``Adiabatic'' means that all species initially
+describe the same local time shift; there is a single growing scalar mode. On scales
+larger than the Hubble radius, $\Rs$ is approximately conserved. Lecture II will use
+its power spectrum $\Delta_{\Rs}^2(k)$, in the notation of the course notes.
+
+Fourier modes make the three-dimensional evolution simple, even though the CMB is
+observed on a sphere. Spherical harmonics provide the corresponding natural basis
+for the two-dimensional observation. Lecture II connects the two descriptions.
+
+% ============================================================
+\section{The tightly coupled photon--baryon fluid}
+\label{sec:acoustics}
+
+\subsection{The physical picture}
+Before recombination photons scatter so rapidly that their mean free path is much
+smaller than the wavelength of interest. Photons and baryons share a common bulk
+velocity,
+\be
+\bv_\gamma\simeq\bv_b.
+\ee
+Gravity tries to compress an overdense region. Photon pressure resists compression.
+The result is the cosmological analogue of sound in air, except that photons provide
+most of the pressure while photons and baryons both provide inertia.
+
+The inertia of a relativistic fluid is set by its \emph{enthalpy density}, $\rho+P$:
+to first order in velocity its momentum density is $(\rho+P)\bv$ in a local
+orthonormal frame. Photons therefore contribute $4\bar\rho_\gamma/3$ to the inertia,
+whereas non-relativistic baryons contribute approximately $\bar\rho_b$.
+Define their ratio, the baryon-loading ratio used in the course notes,
+\be
+\boxed{R\equiv\frac{3\bar\rho_b}{4\bar\rho_\gamma}.}
+\label{eq:R}
+\ee
+Thus \emph{baryon inertia} is the physical resistance of baryons to acceleration,
+while \emph{baryon loading} describes how much of it is added relative to the photon
+inertia. The total inertia is $(4\bar\rho_\gamma/3)(1+R)$.
+Since $\rho_b\propto a^{-3}$ and $\rho_\gamma\propto a^{-4}$, $R\propto a$: the
+baryon contribution becomes more important \emph{relative to photons}, even though
+both densities decrease. In conformal time, $\dot R=\Hs R$.
+
+For an adiabatic compression, the baryon-to-photon number ratio stays fixed. Since
+$n_\gamma\propto T^3$ and $\rho_\gamma\propto T^4$, this gives
+$\delta_b=3\delta_\gamma/4$, or $\delta\rho_b=R\,\delta\rho_\gamma$.
+Using $\delta P_b\simeq0$ and $\delta P_\gamma=\delta\rho_\gamma/3$, the sound speed is
+\be
+c_s^2\equiv\frac{\delta P}{\delta\rho}
+=\frac{\delta P_\gamma}{\delta\rho_\gamma+\delta\rho_b}
+=\boxed{\frac{1}{3(1+R)}}.
+\label{eq:soundspeed}
+\ee
+With no baryons, $c_s=1/\sqrt3$. Adding baryons lowers the sound speed because they add
+inertia but essentially no pressure.
+
+\subsection{Continuity and Euler equations}
+We need two statements: how compression changes a density, and how pressure,
+gravity, and collisions change a velocity. These are the energy and momentum
+moments of the photon Boltzmann equation, or equivalently the continuity and Euler
+equations of the fluid. Take one Fourier mode and define its velocity divergence
+$\theta_i\equiv i\bk\cdot\bv_i$. Lowercase $\theta_i$ is a velocity-divergence variable;
+uppercase $\Theta_0$ is a temperature perturbation. In real space, negative
+divergence means converging flow and hence compression. A spatially uniform velocity
+has zero divergence, so bulk translation by itself does not compress the fluid.
+
+\paragraph{Continuity: compression changes photon temperature.}
+In conformal Newtonian gauge the photon continuity equation is
+\be
+\dot\delta_\gamma=-\frac43\theta_\gamma+4\dot\Phi,
+\label{eq:photoncontinuity}
+\ee
+The factor $4/3=(\bar\rho_\gamma+\bar P_\gamma)/\bar\rho_\gamma$ accounts for both
+energy transport and pressure work. A useful way to see the metric term is that a
+small coordinate cell has proper volume proportional to $a^3(1-3\Phi)$.
+A changing $\Phi$ changes the local volume expansion; the effective perturbation
+of its expansion rate is $\theta_\gamma-3\dot\Phi$. Thus the continuity equation
+can be read as $\dot\delta_\gamma=-(4/3)(\theta_\gamma-3\dot\Phi)$.
+Since $\Theta_0=\delta_\gamma/4$, it also says
+\[
+\dot\Theta_0=-\frac{\theta_\gamma}{3}+\dot\Phi.
+\]
+Compression raises the photon temperature, while changing spatial curvature also
+changes the photon energy density measured locally.
+
+\paragraph{Euler: what accelerates each component?}
+The photon Euler equation, neglecting its quadrupole in tight coupling, is
+\be
+\dot\theta_\gamma=k^2\left(\frac14\delta_\gamma+\Psi\right)
++(-\dot{\tilde\tau})(\theta_b-\theta_\gamma).
+\label{eq:photoneuler}
+\ee
+The pressure acceleration is $-\boldsymbol\nabla\delta P_\gamma/
+(\bar\rho_\gamma+\bar P_\gamma)=-\boldsymbol\nabla\Theta_0$; the gravitational
+acceleration is $-\boldsymbol\nabla\Psi$. Taking their divergences gives
+$k^2\Theta_0$ and $k^2\Psi$, since $\nabla^2\to-k^2$. The remaining term is
+Thomson drag. Its positive rate $-\dot{\tilde\tau}=a n_e\sigma_T$ is the number of
+scatterings per unit \emph{conformal} time.
+
+The baryon Euler equation, neglecting baryon thermal pressure, is
+\be
+\dot\theta_b+\Hs\theta_b=k^2\Psi
++\frac{-\dot{\tilde\tau}}{R}(\theta_\gamma-\theta_b).
+\label{eq:baryoneuler}
+\ee
+Here $\Hs\theta_b$ is the expansion drag: in the absence of forces a
+non-relativistic peculiar velocity decreases as $a^{-1}$. There is no corresponding
+term for the photon bulk-velocity variable, whose radiation pressure and background
+redshifting cancel it. Baryons feel gravity but contribute negligible pressure.
+
+\paragraph{Why scattering equalizes velocities.}
+If photons have a bulk drift relative to the electrons, their radiation is dipolar
+in the electron rest frame. Scattering transfers momentum from this radiation flux
+to electrons, and Coulomb interactions share it with the ions. Thus photons are
+dragged toward the baryon velocity, and baryons toward the photon velocity.
+The two \emph{force densities} are equal and opposite. Dividing them by the two
+inertias gives different accelerations: the baryon acceleration contains
+$(4\bar\rho_\gamma/3)/\bar\rho_b=1/R$. Indeed, the collision contribution to total
+momentum obeys
+\[
+\frac{4\bar\rho_\gamma}{3}\dot\theta_\gamma\big|_{\rm coll}
++\bar\rho_b\dot\theta_b\big|_{\rm coll}=0.
+\]
+Opposite signs \emph{and this inertia weighting} are both necessary for momentum
+conservation.
+
+To check relaxation explicitly, define the velocity slip
+$\Delta\theta=\theta_\gamma-\theta_b$. Retaining only the collision terms gives
+\[
+\left.\frac{d\Delta\theta}{d\tau}\right|_{\rm coll}
+=-(-\dot{\tilde\tau})\left(1+\frac1R\right)\Delta\theta.
+\]
+The coefficient on the right is negative: either sign of slip decays exponentially
+when the rate is approximately constant. Pressure and expansion continually source
+a small slip, but rapid scattering keeps it small. Tight coupling requires the
+scattering rate to exceed both the expansion and mode-evolution rates (in
+particular $-\dot{\tilde\tau}\gg\Hs,k$ is sufficient).
+It locks \emph{bulk velocities}, not the density contrasts or the temperature
+perturbations of the two species.
+
+The original Particle Cosmology notes instead write the scalar velocity as
+\be
+\bv_i=i\hat{\bk}\,v_i.
+\ee
+With the Fourier convention used here, the translation is
+\be
+\boxed{\theta_i=i\bk\cdot\bv_i=-k v_i.}
+\ee
+Thus $v_i$ in the long notes and $\theta_i$ here contain the same scalar velocity
+information; the extra factor and sign come only from the definition.
+
+\subsection{Deriving the acoustic oscillator}
+\paragraph{First derive the equation for the actual photon temperature.}
+Add Eq.~\eqref{eq:photoneuler} to $R$ times Eq.~\eqref{eq:baryoneuler}.
+The collision terms cancel. This order matters: a small velocity slip multiplied
+by a large scattering rate can transfer a finite momentum. Setting the collision
+terms to zero in each species equation separately would lose that transfer.
+Only after adding the equations take the leading tight-coupling limit
+$\theta_\gamma\simeq\theta_b\equiv\theta$ to obtain
+\[
+(1+R)\dot\theta+\Hs R\theta
+=k^2\Theta_0+(1+R)k^2\Psi.
+\]
+Gravity accelerates the whole fluid; only photons supply the pressure force.
+Dividing by $1+R$ makes the reduced pressure acceleration explicit:
+\[
+\dot\theta+\frac{\dot R}{1+R}\theta
+=\frac{k^2}{1+R}\Theta_0+k^2\Psi,
+\qquad \dot R=\Hs R.
+\]
+Now differentiate $\dot\Theta_0=-\theta/3+\dot\Phi$, substitute the combined Euler
+equation, and use $\theta=-3(\dot\Theta_0-\dot\Phi)$. This gives
+\[
+\boxed{\ddot\Theta_0+\frac{\dot R}{1+R}\dot\Theta_0+k^2c_s^2\Theta_0
+=\ddot\Phi+\frac{\dot R}{1+R}\dot\Phi-\frac{k^2}{3}\Psi.}
+\]
+This equation is already a complete temperature oscillator at leading order in
+tight coupling, for specified gravitational potentials. The pressure term restores
+the fluid, $\dot R/(1+R)$ accounts for the changing inertia, $-k^2\Psi/3$ is
+gravitational compression, and the derivatives of $\Phi$ arise from the changing
+spatial metric in the continuity equation.
+
+\paragraph{Why introduce an effective temperature?}
+The intrinsic perturbation $\Theta_0$ tells us how hot the plasma is \emph{where the
+photon is emitted}. The photon also undergoes a gravitational redshift on its way
+out. For time-independent potentials, after factoring out the background redshift,
+the fractional energy change between emission and observation is
+$\Psi_*-\Psi_{\rm obs}$. The observer term is common to all directions and contributes
+only a monopole. The emission term therefore adds $\Psi_*$ to the intrinsic
+temperature perturbation. This motivates
+\be
+X\equiv\Theta_0+\Psi.
+\ee
+In our sign convention a potential well has $\Psi<0$, so its redshift reduces the
+temperature received from an intrinsically hot region. Thus $X$ is the intrinsic
+temperature \emph{plus the local gravitational contribution}, not a new physical
+degree of freedom. It is the emission contribution used in Lecture II; Doppler
+shifts and evolving potentials along the path add further terms to the observable.
+We could keep using $\Theta_0$, but $X$ makes both the observed combination and the
+gravity-shifted oscillation particularly transparent.
+
+Substitute $\Theta_0=X-\Psi$ into the temperature equation:
+\be
+\boxed{
+\begin{aligned}
+\ddot X+\frac{\dot R}{1+R}\dot X+k^2c_s^2X
+={}&\ddot\Phi+\ddot\Psi
++\frac{\dot R}{1+R}(\dot\Phi+\dot\Psi)\\
+&{}-k^2c_s^2R\Psi.
+\end{aligned}}
+\label{eq:oscillator}
+\ee
+This is a damped, driven harmonic oscillator for every Fourier mode $k$:
+\begin{itemize}
+\item $kc_s$ is the acoustic frequency in conformal time; the restoring force
+originates in photon pressure;
+\item $\dot R/(1+R)$ changes the amplitude as the baryon inertia grows. This is
+expansion-related damping, not dissipative photon diffusion;
+\item $-k^2c_s^2R\Psi$ shifts the equilibrium even for constant potentials;
+\item time derivatives of $\Phi$ and $\Psi$ drive the oscillation when gravity evolves.
+\end{itemize}
+
+\paragraph{A solvable limit and the acoustic phase.}
+For intuition, freeze $R$, $\Phi$, and $\Psi$ over an oscillation, so their time
+derivatives vanish. Equation~\eqref{eq:oscillator} reduces to
+\[
+\ddot X+k^2c_s^2(X+R\Psi)=0.
+\]
+The displacement from equilibrium is therefore $X+R\Psi$, whose solution is
+\be
+X(\tau)+R\Psi=C_1\cos[k r_s(\tau)]+C_2\sin[k r_s(\tau)],
+\label{eq:oscillatorsolution}
+\ee
+where
+\be
+\boxed{r_s(\tau)=\int_0^\tau c_s(\tau')d\tau'}
+\label{eq:soundhorizon}
+\ee
+is the comoving sound horizon: the maximum comoving distance a sound wave could have
+travelled by time $\tau$. For the constant-coefficient toy model,
+$r_s=c_s\tau$ (with the chosen time origin), and
+Eq.~\eqref{eq:oscillatorsolution} is exact. When $R$ varies slowly, the accumulated
+phase is still approximately $k\int c_s d\tau=kr_s$, but the amplitude and the
+equilibrium also evolve: constant $C_1,C_2$ are then only a toy approximation.
+Rapid potential evolution requires solving the driven equation.
+
+For the dominant adiabatic growing mode, all wavelengths begin with a coherent phase:
+they are initially displaced with negligible velocity. Consequently the cosine term
+dominates. At recombination we take a snapshot. Modes satisfying
+\be
+k_n r_s(\tau_*)\simeq n\pi,
+\qquad n=1,2,3,\ldots
+\label{eq:peakcondition}
+\ee
+are at extrema of compression or rarefaction. This harmonic series in $k$ becomes the
+series of acoustic peaks in angular multipole $\ell$ after projection onto the sky.
+
+\keyresult{Gravity displaces the photon--baryon fluid, photon pressure restores it,
+inflationary/adiabatic initial conditions synchronize the phase, and recombination
+takes a snapshot. These four facts produce the acoustic peaks.}
+
+\subsection{Baryon loading and gravitational driving}
+We can now derive the equilibrium shift rather than assume it. For a static
+potential and fixed $R$, set the velocity and acceleration to zero in the combined
+Euler equation. Pressure must balance gravity:
+\[
+0=\frac{k^2}{1+R}\Theta_{0,\rm eq}+k^2\Psi,
+\qquad
+\Theta_{0,\rm eq}=-(1+R)\Psi.
+\]
+Photons must provide enough pressure to support \emph{both} their own inertia and
+the baryons in the potential well. More baryons therefore require a larger intrinsic
+temperature and density perturbation for balance. Converting to the effective
+temperature gives
+\[
+\boxed{X_{\rm eq}=\Theta_{0,\rm eq}+\Psi=-R\Psi.}
+\]
+With no baryons the intrinsic equilibrium temperature $-\Psi$ is exactly cancelled
+by the gravitational redshift, so $X_{\rm eq}=0$. Baryons leave the extra offset
+$-R\Psi$. For a potential well ($\Psi<0$), this offset is positive. An oscillation
+of amplitude $A$ has extrema $X=-R\Psi\pm A$: its compressed, hot phase is enhanced
+relative to its rarefied, cold phase. Projecting these coherent oscillations gives
+the characteristic odd--even temperature-peak modulation: odd compression peaks
+are enhanced as the baryon density increases.
+
+During exact matter domination, the gravitational potentials are nearly constant.
+Around radiation--matter equality they evolve. A time-dependent equilibrium point
+does work on the oscillator. Modes entering the horizon during radiation domination
+are therefore boosted by \emph{radiation driving}. This is why the peak envelope also
+contains information about the physical matter density and the time of equality.
+
+The acoustic peaks are evidence for coherent initial conditions. If different
+regions or Fourier modes began oscillating with random phases, averaging over them
+would wash out the peak--trough sequence.
+
+% ============================================================
+\section{Why the peaks do not continue forever}
+
+Tight coupling is an approximation. Photons have a small but nonzero mean free path
+and random-walk out of hot overdense regions. Heat conduction and shear viscosity erase
+anisotropy below a diffusion length. In Fourier space the acoustic amplitude is
+approximately multiplied by
+\be
+\exp[-k^2/k_D^2].
+\ee
+This is Silk, or photon-diffusion, damping. The finite thickness of the visibility
+function adds further averaging: photons last-scattering at slightly different times
+sample slightly different oscillation phases.
+
+The main physical scales at last scattering are therefore
+\begin{itemize}
+\item the comoving distance $\chi_*$ from us to the last-scattering surface;
+\item the sound horizon $r_s(\tau_*)$, setting the acoustic spacing;
+\item the diffusion length $r_D\sim k_D^{-1}$, setting the damping tail;
+\item the horizon around equality, setting gravitational driving.
+\end{itemize}
+Projection turns the sound horizon into an angle,
+\be
+\boxed{\theta_s=\frac{r_s(\tau_*)}{\chi_*},
+\qquad \ell_A\simeq\frac{\pi}{\theta_s}.}
+\ee
+This compact equation is why the CMB constrains geometry: early-time physics predicts
+the ruler $r_s$, while late-time expansion determines the distance $\chi_*$.
+
+\section*{Summary}
+We can now tell the CMB story without equations:
+\begin{enumerate}
+\item An FLRW Universe expands and cools; photon wavelengths grow as $a$ and $T\propto a^{-1}$.
+\item The early Universe is an opaque photon--baryon plasma maintained by Thomson scattering.
+\item Neutral hydrogen formation rapidly lowers $n_e$; the visibility function peaks and photons free-stream.
+\item Small primordial perturbations provide gravitational potential wells.
+\item Gravity and photon pressure make the tightly coupled plasma oscillate with sound speed
+$c_s^2=1/[3(1+R)]$.
+\item Recombination photographs these coherently phased oscillations. Baryons modulate
+compressions and diffusion damps short wavelengths.
+\item We observe the three-dimensional pattern projected onto a two-dimensional sphere.
+Lecture II turns this statement into the angular spectrum $C_\ell$.
+\end{enumerate}
+
+\section*{Companion numerical notebook}
+The physical sequence in this lecture can be explored in the accompanying notebook:
+\begin{center}
+\href{https://colab.research.google.com/github/daanmeerburg/RTG_3186_CMB_Lectures/blob/main/CMB_physics_from_expansion_to_acoustics.ipynb}{\textbf{Open the Lecture I exercise directly in Google Colab}}.
+\end{center}
+It visualizes radiation, matter, and vacuum domination; solves the Saha equation;
+constructs an approximate visibility function; calculates the photon--baryon sound
+horizon; and plots the coherent density and velocity phases. The notebook emphasizes
+where the Saha approximation differs from a precision recombination calculation and
+ends with exercises exploring the physical parameters.
+
+\section*{Further derivation A: scale-factor solutions}
+For a component with constant $w$, combine $\rho\propto a^{-3(1+w)}$ with Friedmann:
+\[
+\frac{1}{a}\frac{da}{dt}\propto a^{-3(1+w)/2}.
+\]
+For $w\ne-1$, separation of variables gives
+\be
+a(t)\propto t^{\frac{2}{3(1+w)}}.
+\ee
+Thus radiation gives $a\propto t^{1/2}$ and matter gives $a\propto t^{2/3}$.
+
+\section*{Further derivation B: why the large-scale temperature is gravitational}
+The photon reaching us carries an intrinsic temperature perturbation and is redshifted
+while climbing out of a potential well. At last scattering these combine as
+\be
+\left[\frac14\delta_\gamma+\Psi\right]_*.
+\ee
+For an adiabatic mode on scales much larger than the sound horizon during matter
+domination, the result is the ordinary Sachs--Wolfe relation
+\be
+\left.\frac{\delta T}{T}\right|_{\rm SW}\simeq\frac13\Psi_*.
+\ee
+There is also a Doppler contribution from the baryon velocity and an integrated
+Sachs--Wolfe contribution if $\Phi$ or $\Psi$ evolves along the photon path. These are
+the opening ingredients of Lecture II.
+
+\section*{Notation guide}
+\begin{center}
+\begin{tabular}{@{}p{.33\linewidth}p{.62\linewidth}@{}}\toprule
+Symbol & Meaning\\ \midrule
+$t$, $H=a^{-1}da/dt$ & cosmic time and cosmic-time Hubble rate; dot means $d/dt$ in Sec.~2\\
+$\tau$, $\Hs=\dot a/a=aH$ & conformal time and conformal Hubble rate; thereafter dot means $d/d\tau$\\
+$\tilde\tau$ & Thomson optical depth, not a time coordinate\\
+$\chi$, $\chi_*$ & comoving radial coordinate and distance to last scattering\\
+$n_H$, $n_{H^0}$, $x_e$ & total hydrogen-nucleus density, neutral-atom density, and $n_e/n_H$\\
+$\Phi,\Psi$ & conformal-Newtonian-gauge metric potentials\\
+$\Theta=\delta T/\bar T$ & fractional photon-temperature perturbation\\
+$\delta_\gamma$ & fractional photon-energy-density perturbation; $\Theta_0=\delta_\gamma/4$\\
+$\Theta_1$ & photon temperature dipole; proportional to photon momentum or bulk flow\\
+$\theta_i=i\bk\cdot\bv_i$ & velocity divergence, distinct from temperature $\Theta_0$\\
+$X=\Theta_0+\Psi$ & intrinsic temperature plus local gravitational contribution\\
+$R=3\bar\rho_b/(4\bar\rho_\gamma)$ & baryon-to-photon inertia ratio (baryon loading)\\
+$\Rs$, $\Delta_{\Rs}^2$ & comoving curvature perturbation and its dimensionless power spectrum\\
+$r_s$ & comoving sound horizon\\ \bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Source and scope note}
+This lecture is a shortened, reordered version of the Particle Cosmology course notes:
+FLRW dynamics and redshift from Lectures 1--2; equilibrium, decoupling, and recombination
+from Lecture 3; scalar perturbations and conformal Newtonian gauge from Lecture 4; and
+tight coupling and CMB acoustic physics from Lecture 5. The notation has been aligned
+with those notes. Material has been reordered so that no prior cosmology course is
+assumed; detailed gauge transformations and the full Boltzmann hierarchy are postponed.
+The intermediate steps on chemical equilibrium, momentum exchange, and the
+oscillator's equilibrium have been expanded here for a first introduction.
+For supplementary derivations see
+\href{https://arxiv.org/abs/astro-ph/9506072}{Ma \& Bertschinger (1995)} for the
+fluid equations and
+\href{https://background.uchicago.edu/~whu/araa/node10.html}{Hu \& Dodelson's
+discussion of baryon loading} for the oscillator interpretation. Metric signs
+throughout follow the Particle Cosmology master notes.
+
+\end{document}
