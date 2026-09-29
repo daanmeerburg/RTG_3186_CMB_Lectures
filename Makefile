@@ -11,4 +11,3 @@ slides:
 clean:
 	latexmk -c Lecture_1_CMB_physics.tex
 	cd slides && latexmk -c Lecture_1_slides.tex
-
