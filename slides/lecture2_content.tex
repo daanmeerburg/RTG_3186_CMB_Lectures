@@ -688,7 +688,12 @@ Lensing, SZ signals, galaxies, and foregrounds generate non-Gaussianity after re
 
 \begin{frame}{Galaxy cross-correlations reveal secondary non-Gaussianity}
 \begin{center}
-\includegraphics[height=5.75cm,trim=10 10 10 15,clip]{g2t_fit_observed_g2_prl_sellentin_observed_g2_rsz_mmax16_20260925.png}
+\begin{tikzpicture}
+\node[inner sep=0] (gttresult) {\includegraphics[height=5.75cm,trim=10 10 10 15,clip]{g2t_fit_observed_g2_prl_sellentin_observed_g2_rsz_mmax16_20260925.png}};
+\node[anchor=north east,fill=orange,fill opacity=.9,text opacity=1,
+      text=white,font=\bfseries\small,inner sep=3pt]
+      at ($(gttresult.north east)+(-.08,-.08)$) {PRELIMINARY};
+\end{tikzpicture}
 \end{center}
 \credit{$C_L^{g^2T_\nu}$ compresses a galaxy--galaxy--temperature bispectrum. Frequency dependence separates tSZ, CIB, and self-pair terms.}
 \end{frame}
